@@ -67,7 +67,12 @@ $color${font Open Sans:size=10}$alignc${time %A}, ${if_match "pmfix${time %p}" =
 ${voffset -8}${font Open Sans:Bold:size=10}${color0}SYSTEM ${color EC0100}${hr 3}$color${font}
 Kernel$alignr$sysname $kernel 
 OS $alignr${head /etc/mx-version 1 86400}\
-Uptime $alignr $uptime
+Uptime  $alignr $uptime
+${if_existing /sys/class/power_supply/BAT0}\
+Battery ${alignr} ${battery BAT0}
+${else}\
+Battery ${alignr} ${battery BAT1}
+${endif}\
 
 # MEMORY
 ${voffset -8}${font Open Sans:Bold:size=10}${color0}MEMORY ${color EC0100}${hr 3}
